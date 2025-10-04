@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WorldsModule } from './worlds/worlds.module';
-import { EntitiesModule } from './entities/entities.module';
+import { EntitiesModule } from './world_entities/world_entities.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
