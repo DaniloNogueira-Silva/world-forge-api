@@ -31,6 +31,13 @@ export class WorldEntity {
     })
     attributes: object;
 
+    @Column({
+        type: 'jsonb',
+        nullable: false,
+        default: {},
+    })
+    relations: object;
+
     // --- Relações ---
 
     @ManyToOne(() => World, (world) => world.id, { onDelete: 'CASCADE' })
@@ -47,5 +54,7 @@ export class WorldEntity {
     updated_at: Date;
 
     @ManyToOne(() => User, user => user.id)
-    createdBy: User;
+
+    @Column()
+    createdBy: string;
 }

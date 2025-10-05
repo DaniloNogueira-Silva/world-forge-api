@@ -3,4 +3,5 @@ export enum EntityType {
     LOCATION = 'LOCATION',
     ITEM = 'ITEM',
     FACTION = 'FACTION',
+    ORGANIZATION = 'ORGANIZATION'
 }
