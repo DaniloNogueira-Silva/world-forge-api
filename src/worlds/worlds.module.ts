@@ -8,6 +8,6 @@ import { AuthModule } from '../auth/auth.module';
 @Module({
   imports: [TypeOrmModule.forFeature([World]), AuthModule],
   controllers: [WorldsController],
-  providers: [WorldsService]
+  providers: [WorldsService],
 })
-export class WorldsModule { }
+export class WorldsModule {}

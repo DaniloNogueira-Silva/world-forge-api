@@ -1,60 +1,58 @@
 import { User } from '../../auth/entities/user.entity';
 import { World } from '../../worlds/entities/world.entity';
 import {
-    Column,
-    CreateDateColumn,
-    Entity,
-    ManyToOne,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { EntityType } from '../enums/entities_type.enum';
 
 @Entity('entities')
 export class WorldEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column({
-        type: 'enum',
-        enum: EntityType,
-    })
-    entity_type: EntityType;
+  @Column({
+    type: 'enum',
+    enum: EntityType,
+  })
+  entity_type: EntityType;
 
-    @Column({
-        type: 'jsonb',
-        nullable: false,
-        default: {},
-    })
-    attributes: object;
+  @Column({
+    type: 'jsonb',
+    nullable: false,
+    default: {},
+  })
+  attributes: object;
 
-    @Column({
-        type: 'jsonb',
-        nullable: false,
-        default: {},
-    })
-    relations: object;
+  @Column({
+    type: 'jsonb',
+    nullable: false,
+    default: {},
+  })
+  relations: object;
 
-    // --- Relações ---
+  // --- Relações ---
 
-    @ManyToOne(() => World, (world) => world.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => World, (world) => world.id, { onDelete: 'CASCADE' })
+  @Column()
+  worldId: string;
 
-    @Column()
-    worldId: string;
+  // --- Timestamps ---
 
-    // --- Timestamps ---
+  @CreateDateColumn()
+  created_at: Date;
 
-    @CreateDateColumn()
-    created_at: Date;
+  @UpdateDateColumn()
+  updated_at: Date;
 
-    @UpdateDateColumn()
-    updated_at: Date;
-
-    @ManyToOne(() => User, user => user.id)
-
-    @Column()
-    createdBy: string;
+  @ManyToOne(() => User, (user) => user.id)
+  @Column()
+  createdBy: string;
 }

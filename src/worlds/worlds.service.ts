@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { EntityNotFoundError, Repository } from 'typeorm';
 import { World } from './entities/world.entity';
 import { CreateWorldDto } from './dto/create-world.dto';
 import { User } from '../auth/entities/user.entity';
@@ -30,7 +30,20 @@ export class WorldsService {
     });
   }
 
-  async findOne(id: string): Promise<World | null> {
-    return this.worldRepository.findOneBy({ id });
+  async findOne(id: string, user: User): Promise<World> {
+    try {
+      return await this.worldRepository.findOneOrFail({
+        where: {
+          id,
+          userId: user.id,
+        },
+      });
+    } catch (error) {
+      if (error instanceof EntityNotFoundError) {
+        throw new NotFoundException('World not found.');
+      }
+
+      throw error;
+    }
   }
 }

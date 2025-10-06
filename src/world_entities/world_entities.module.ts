@@ -9,6 +9,6 @@ import { World } from '../worlds/entities/world.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([WorldEntity, World]), AuthModule],
   controllers: [EntitiesController],
-  providers: [EntitiesService]
+  providers: [EntitiesService],
 })
-export class EntitiesModule { }
+export class EntitiesModule {}
