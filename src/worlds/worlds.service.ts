@@ -7,26 +7,30 @@ import { User } from '../auth/entities/user.entity';
 
 @Injectable()
 export class WorldsService {
-    constructor(
-        @InjectRepository(World)
-        private readonly worldRepository: Repository<World>,
-    ) { }
+  constructor(
+    @InjectRepository(World)
+    private readonly worldRepository: Repository<World>,
+  ) {}
 
-    async create(createWorldDto: CreateWorldDto, user: User): Promise<World> {
-        const world = this.worldRepository.create({
-            ...createWorldDto,
-            user,
-        });
+  async create(createWorldDto: CreateWorldDto, user: User): Promise<World> {
+    const world = this.worldRepository.create({
+      ...createWorldDto,
+      user,
+    });
 
-        await this.worldRepository.save(world);
-        return world;
-    }
+    await this.worldRepository.save(world);
+    return world;
+  }
 
-    async findUserWorlds(user: User): Promise<World[]> {
-        return this.worldRepository.find({
-            where: {
-                userId: user.id,
-            },
-        });
-    }
+  async findUserWorlds(user: User): Promise<World[]> {
+    return this.worldRepository.find({
+      where: {
+        userId: user.id,
+      },
+    });
+  }
+
+  async findOne(id: string): Promise<World | null> {
+    return this.worldRepository.findOneBy({ id });
+  }
 }

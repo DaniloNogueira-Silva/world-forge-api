@@ -8,20 +8,20 @@ import { GetUser } from 'src/auth/get-user.decorator';
 @Controller('worlds')
 @UseGuards(AuthGuard())
 export class WorldsController {
-    constructor(private readonly worldsService: WorldsService) { }
+  constructor(private readonly worldsService: WorldsService) {}
 
-    @Post()
-    async create(
-        @Body() createWorldDto: CreateWorldDto,
-        @GetUser() user: User,
-    ) {
-        return this.worldsService.create(createWorldDto, user);
-    }
+  @Post()
+  async create(@Body() createWorldDto: CreateWorldDto, @GetUser() user: User) {
+    return this.worldsService.create(createWorldDto, user);
+  }
 
-    @Get()
-    async findUserWorlds(
-        @GetUser() user: User,
-    ) {
-        return this.worldsService.findUserWorlds(user);
-    }
+  @Get()
+  async findUserWorlds(@GetUser() user: User) {
+    return this.worldsService.findUserWorlds(user);
+  }
+
+  @Get(':id')
+  async findOne(@GetUser() user: User, @Body() id: string) {
+    return this.worldsService.findOne(id);
+  }
 }
