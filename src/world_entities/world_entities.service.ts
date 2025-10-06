@@ -50,8 +50,18 @@ export class EntitiesService {
     return entity;
   }
 
-  async findAll(user: User): Promise<WorldEntity[] | []> {
-    return this.entityRepository.find({ where: { createdBy: user.id } });
+  async findAll(worldId: string, user: User): Promise<WorldEntity[] | []> {
+    const world = await this.worldRepository.findOne({
+      where: { id: worldId, userId: user.id },
+    });
+
+    if (!world) {
+      throw new UnauthorizedException('You do not own this world.');
+    }
+
+    return this.entityRepository.find({
+      where: { createdBy: user.id, worldId: world.id },
+    });
   }
 
   async addRelation(
