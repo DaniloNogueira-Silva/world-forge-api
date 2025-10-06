@@ -1,5 +1,5 @@
-import { User } from 'src/auth/entities/user.entity';
-import { World } from 'src/worlds/entities/world.entity';
+import { User } from '../../auth/entities/user.entity';
+import { World } from '../../worlds/entities/world.entity';
 import {
     Column,
     CreateDateColumn,

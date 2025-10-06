@@ -3,7 +3,7 @@ import { WorldsService } from './worlds.service';
 import { CreateWorldDto } from './dto/create-world.dto';
 import { User } from '../auth/entities/user.entity';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/auth/get-user.decorator';
+import { GetUser } from '../auth/get-user.decorator';
 
 @Controller('worlds')
 @UseGuards(AuthGuard())
