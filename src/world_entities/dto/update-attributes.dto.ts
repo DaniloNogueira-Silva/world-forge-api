@@ -7,7 +7,6 @@ export class UpdateAttributesDto {
     description:
       'Mapa completo de atributos que substituirá os valores atuais.',
     example: { alinhamento: 'Neutro', arma: 'Espada Longa' },
-    type: 'object',
   })
   attributes: Record<string, string>;
 }

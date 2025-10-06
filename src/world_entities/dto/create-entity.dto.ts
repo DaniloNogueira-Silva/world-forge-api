@@ -32,7 +32,6 @@ export class CreateEntityDto {
   @ApiProperty({
     description: 'Mapa de atributos personalizados que descrevem a entidade.',
     example: { origem: 'Capital', classe: 'Paladino' },
-    type: 'object',
   })
   attributes: object;
 }

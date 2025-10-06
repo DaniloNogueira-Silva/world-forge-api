@@ -16,7 +16,7 @@ export class CreateRelationsDto {
   @ApiProperty({
     description: 'Tipo da relação entre as entidades.',
     enum: RelationsType,
-    example: RelationsType.ALLY,
+    example: RelationsType.ENEMY,
   })
   type: RelationsType;
 }

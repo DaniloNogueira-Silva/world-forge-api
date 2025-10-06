@@ -8,7 +8,6 @@ API construída com [NestJS](https://nestjs.com/) para gerenciar mundos ficciona
 - [Instalação](#instalação)
 - [Variáveis de ambiente](#variáveis-de-ambiente)
 - [Execução](#execução)
-- [Testes](#testes)
 - [Documentação com Swagger](#documentação-com-swagger)
 - [Fluxos principais](#fluxos-principais)
 - [Estrutura de pastas](#estrutura-de-pastas)
@@ -36,7 +35,6 @@ Crie um arquivo `.env` com as configurações abaixo ou defina-as no ambiente de
 | --- | --- |
 | `PORT` | Porta HTTP da aplicação (padrão: `3000`). |
 | `JWT_SECRET` | Segredo usado para assinar tokens JWT. |
-| `JWT_EXPIRES_IN` | Duração do token JWT (ex.: `3600s`). |
 | `DATABASE_URL` ou parâmetros isolados (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS`) | Configuração de conexão com o PostgreSQL. |
 
 ## Execução
